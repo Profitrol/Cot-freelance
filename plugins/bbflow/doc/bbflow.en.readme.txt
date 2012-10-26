@@ -1,0 +1,142 @@
+BBCodes for flow players
+
+Name: bbflow
+Type: plugin
+Version: 2009-03-27 beta
+Author: dervan
+
+
+Preface.
+
+Allow BBCodes to embed video clips from popular video hosts.
+
+
+Features.
+
+Supported BBCodes for video hosts:
+- CollegeHumor
+- Dailymotion
+- GameSpot
+- GameTrailers
+- Google Video
+- Metacafe
+- RuTube
+- Spike
+- Veoh
+- Video@Mail.Ru
+- Yahoo! Video
+- YouTube
+
+Created menu for markItUp! with these BBCodes.
+
+Configured align for players from video hosts: left, right, center.
+
+
+Requirements.
+
+System: Cotonti (plugin is tested under Cotonti 0.0.3).
+
+Note: plugin does not work under Seditio.
+
+
+Installation.
+
+1.
+Copy directory 'bbflow' with all files to Cotonti directory for plugins.
+2.
+Log into Administration panel and install plugin.
+
+Note: Seditio Compatibility plugin supports these Seditio legacy BBCodes:
+- Google Video
+- Metacafe
+- YouTube
+If Seditio Compatibility plugin is installed already, then Seditio legacy
+BBCodes installed too. These Seditio legacy BBCodes will be overwritten
+by bbflow plugin.
+
+
+Examples.
+
+Host:   CollegeHumor
+Link:   http://www.collegehumor.com/video:52105
+BBCode: [collegehumor=52105]
+
+Host:   Dailymotion
+Link:   http://www.dailymotion.com/video/x57ikw_people
+BBCode: [dailymotion=x57ikw_people]
+
+Host:   GameSpot
+Link:   http://www.gamespot.com/xbox360/puzzle/guitarherometallica/video/6203325/guitar-hero-metallica-official-movie-1
+BBCode: [gamespot=6203325]
+
+Host:   GameTrailers
+Link:   http://www.gametrailers.com/player/46173.html
+BBCode: [gametrailers=46173]
+
+Host:   Google Video
+Link:   http://video.google.com/videoplay?docid=-110424371062222836
+BBCode: [googlevideo=-110424371062222836]
+Link:   http://video.google.com/videoplay?docid=-8742846575732162616
+BBCode: [googlevideo=-8742846575732162616]
+
+Host:   Metacafe
+Link:   http://www.metacafe.com/watch/336726/adir_miller_show/
+BBCode: [metacafe=336726/adir_miller_show.swf]
+
+Host:   RuTube
+Link:   http://rutube.ru/tracks/741891.html?v=ef46c146a78b75be8d80414c0a7f81df
+BBCode: [rutube=ef46c146a78b75be8d80414c0a7f81df]
+
+Host:   Spike
+Link:   http://www.spike.com/video/pinocchio-trailer/2444060
+BBCode: [spike=2444060]
+
+Host:   Veoh
+Link:   http://www.veoh.com/browse/videos/category/entertainment/watch/v17483327ZSaP2qQD
+BBCode: [veoh=v17483327ZSaP2qQD]
+
+Host:   Video@Mail.Ru
+Link:   http://video.mail.ru/mail/olchik_06/486/487.html
+BBCode: [mailruvideo=olchik_06/486/487]
+
+Host:   Yahoo! Video
+Link:   http://video.yahoo.com/watch/1140713/5248092
+BBCode: [yahoovideo=1140713/5248092]
+
+Host:   YouTube
+Link:   http://www.youtube.com/watch?v=Mi_Cf1OFAFY
+BBCode: [youtube=Mi_Cf1OFAFY]
+
+
+Package.
+
+bbflow/bbflow.header.php
+bbflow/bbflow.setup.php
+
+bbflow/markitup/set.js
+bbflow/markitup/style.css
+bbflow/markitup/lang/en.lang.js
+bbflow/markitup/lang/ru.lang.js
+bbflow/markitup/images/flowmenu.png
+bbflow/markitup/images/v/collegehumor.png
+bbflow/markitup/images/v/dailymotion.png
+bbflow/markitup/images/v/gamespot.png
+bbflow/markitup/images/v/gametrailers.png
+bbflow/markitup/images/v/googlevideo.png
+bbflow/markitup/images/v/metacafe.png
+bbflow/markitup/images/v/rutube.png
+bbflow/markitup/images/v/spike.png
+bbflow/markitup/images/v/veoh.png
+bbflow/markitup/images/v/videomailru.png
+bbflow/markitup/images/v/yahoovideo.png
+bbflow/markitup/images/v/youtube.png
+
+bbflow/tpl/v.center.css
+bbflow/tpl/v.left.css
+bbflow/tpl/v.right.css
+
+bbflow/lang/bbflow.en.lang.php
+bbflow/lang/bbflow.ru.lang.php
+
+bbflow/doc/bbflow.en.readme.txt
+bbflow/doc/bbflow.ru.readme.txt

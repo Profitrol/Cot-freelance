@@ -1,0 +1,85 @@
+php_flag display_errors on
+php_value post_max_size 20M
+php_value upload_max_filesize 20M
+php_value max_execution_time 300
+
+#ErrorDocument 404 http://dev.cmsworks.ru/404.php
+
+
+### COTONTI URLTRANS ###
+# Rewrite engine options
+Options FollowSymLinks -Indexes
+RewriteEngine On
+# Server-relative path to seditio:
+RewriteBase "/"
+RewriteRule ^(datas|images|js|skins)/(.*)$ $1/$2 [QSA,NC,NE,L]
+RewriteRule ^([^/&?#]+)\.html(.*)$ page.php?al=$1$2 [QSA,NC,NE,L]
+RewriteRule ^shop/prd([^/&?#]+)(.*)$ plug.php?itemid=$1&e=market&m=show$2 [QSA,NC,NE,L]
+RewriteRule ^shop/([^/&?#]+)/(.*)$ plug.php?m=$1&e=market$2 [QSA,NC,NE,L]
+RewriteRule ^shop/(.*)$ plug.php?e=market$1 [QSA,NC,NE,L]
+RewriteRule ^balance/buy([^/&?#]+)/([^/&?#]+)(.*)$ plug.php?type=$1&a=$2&e=balance&m=buy$3 [QSA,NC,NE,L]
+RewriteRule ^balance/buy([^/&?#]+)(.*)$ plug.php?type=$1&e=balance&m=buy$2 [QSA,NC,NE,L]
+RewriteRule ^balance/([^/&?#]+)/([^/&?#]+)(.*)$ plug.php?m=$1&a=$2&e=balance$3 [QSA,NC,NE,L]
+RewriteRule ^balance/([^/&?#]+)/(.*)$ plug.php?m=$1&e=balance$2 [QSA,NC,NE,L]
+RewriteRule ^balance/(.*)$ plug.php?e=balance$1 [QSA,NC,NE,L]
+RewriteRule ^register/(.*)$ users.php?m=register$1 [QSA,NC,NE,L]
+RewriteRule ^skills/([^/&?#]+)/(.*)$ plug.php?m=$1&e=skills$2 [QSA,NC,NE,L]
+RewriteRule ^skills/(.*)$ plug.php?e=skills$1 [QSA,NC,NE,L]
+RewriteRule ^portfolio/page([^/&?#]+)(.*)$ plug.php?itemid=$1&e=portfolio&m=show$2 [QSA,NC,NE,L]
+RewriteRule ^portfolio/([^/&?#]+)/(.*)$ plug.php?m=$1&e=portfolio$2 [QSA,NC,NE,L]
+RewriteRule ^portfolio(.*)$ plug.php?e=portfolio$1 [QSA,NC,NE,L]
+RewriteRule ^projects/page([^/&?#]+)(.*)$ plug.php?itemid=$1&e=projects&m=show$2 [QSA,NC,NE,L]
+RewriteRule ^projects/([^/&?#]+)/(.*)$ plug.php?m=$1&e=projects$2 [QSA,NC,NE,L]
+RewriteRule ^projects/(.*)$ plug.php?e=projects$1 [QSA,NC,NE,L]
+RewriteRule ^blogs/post([^/&?#]+)(.*)$ plug.php?id=$1&e=blogs&m=show$2 [QSA,NC,NE,L]
+RewriteRule ^blogs/(.*)$ plug.php?e=blogs$1 [QSA,NC,NE,L]
+RewriteRule ^users/([^/&?#]+)/([^/&?#]+)(.*)$ users.php?u=$1&tab=$2&m=details$3 [QSA,NC,NE,L]
+RewriteRule ^users/([^/&?#]+)(.*)$ users.php?u=$1&m=details$2 [QSA,NC,NE,L]
+RewriteRule ^employers/(.*)$ users.php?gm=8$1 [QSA,NC,NE,L]
+RewriteRule ^freelancers/(.*)$ users.php?gm=4$1 [QSA,NC,NE,L]
+RewriteRule ^auth/(.*)$ users.php?m=auth$1 [QSA,NC,NE,L]
+
+### COTONTI URLTRANS ###
+
+
+
+
+
+
+
+
+
+RewriteRule ^projects/?d=0$ projects/ [R=permanent]
+RewriteRule ^market/?d=0$ market/ [R=permanent]
+RewriteRule ^freelancers/?d=0$ freelancers/ [R=permanent]
+RewriteRule ^blogs/?d=0$ blogs/ [R=permanent]
+
+
+
+
+### Редирект на страницы со слешем ###
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ /$1/ [R=301,L] 
+
+
+RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/$ list.php?c=$1 [QSA,NC,NE,L]
+RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/$ list.php?c=$2 [QSA,NC,NE,L]
+RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/([a-z-]+)/$ list.php?c=$3 [QSA,NC,NE,L]
+RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/([a-z-]+)/([a-z-]+)/$ list.php?c=$4 [QSA,NC,NE,L]
+RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/([a-z-]+)/([a-z-]+)/([a-z-]+)/$ list.php?c=$5 [QSA,NC,NE,L]
+
+
+RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([0-9]+)$ page.php?id=$2 [QSA,NC,NE,L]
+RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/([0-9]+)$ page.php?id=$3 [QSA,NC,NE,L]
+RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/([a-z-]+)/([a0-9]+)$ page.php?id=$4 [QSA,NC,NE,L]
+RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/([a-z-]+)/([a-z-]+)/([a0-9]+)$ page.php?id=$5 [QSA,NC,NE,L]
+RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/([a-z-]+)/([a-z-]+)/([a-z-]+)/([a0-9]+)$ page.php?id=$6 [QSA,NC,NE,L]
+
+
+#for page alias
+#RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/([a-z-]+)/([a-z-]+)/([a-z-]+)/([a-zA-Z0-9-_]+)$ page.php?al=$6 [QSA,NC,NE,L]
+#RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/([a-z-]+)/([a-z-]+)/([a-zA-Z0-9-_]+)$ page.php?al=$5 [QSA,NC,NE,L]
+#RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/([a-z-]+)/([a-zA-Z0-9-_]+)$ page.php?al=$4 [QSA,NC,NE,L]
+#RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-z-]+)/([a-zA-Z0-9-_]+)$ page.php?al=$3 [QSA,NC,NE,L]
+#RewriteRule ^(company|catalog|help|about|articles|board|news|cnews|system)/([a-zA-Z0-9-_]+)$ page.php?al=$2 [QSA,NC,NE,L]

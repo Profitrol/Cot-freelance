@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /datas
+Disallow: /images
+Disallow: /js
+Disallow: /skins
