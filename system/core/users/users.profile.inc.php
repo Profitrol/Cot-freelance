@@ -392,7 +392,7 @@ switch ($a)
 	if (!empty($rnewpass1) && !empty($rnewpass2) && !empty($roldpass))
 	{
 		$roldpass = sed_import('roldpass','P','PSW');
-		$roldpass = md5($roldpass);
+		$roldpass = sed_hash($roldpass, $urr['user_passsalt'], $urr['user_passfunc']);
 
 		$rnewpass1 = sed_import('rnewpass1','P','PSW');
 		$rnewpass2 = sed_import('rnewpass2','P','PSW');
@@ -411,7 +411,8 @@ switch ($a)
 
 		if (empty($error_string))
 		{
-			$rnewpass = md5($rnewpass1);
+			$rpassfunc = empty($cfg['hashfunc']) ? 'sha256' : $cfg['hashfunc'];
+			$rnewpass = sed_hash($rnewpass1, $urr['user_passsalt'], $rpassfunc);
 
 			sed_sql_query("UPDATE $db_users SET user_password='$rnewpass' WHERE user_id={$usr['id']}");
 		}
