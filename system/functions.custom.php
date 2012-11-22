@@ -56,7 +56,7 @@ function sed_notfound($cond=TRUE)
 
 function sed_build_uname($id, $user, $uname)
 {
-	$fullname = $uname;
+	$fullname = htmlspecialchars($uname);
 
 	if(!empty($id)){
 		if($fullname != " ")
