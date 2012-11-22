@@ -635,9 +635,6 @@ switch ($a)
 			$sql = sed_sql_query($ssql);
 		}
 		
-		$sed_fcat = sed_load_fcat();
-		sed_cache_store('sed_fcat', $sed_fcat, 3600);
-		
 		if(!empty($rusermaingrp) && $usr['isadmin']){
 			$rusermaingrp = ($rusermaingrp < SED_GROUP_MEMBERS && $urr['user_id']==1) ? SED_GROUP_TOPADMINS : $rusermaingrp;
 
