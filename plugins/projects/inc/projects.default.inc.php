@@ -13,6 +13,10 @@ if (empty($d))
 { $d = '0'; }
 
 $sq = sed_import('sq','G','TXT');
+$sq = htmlspecialchars($sq);
+$sq = preg_replace('/ +/', ' ', $sq);
+$sq = sed_sql_prep($sq);
+
 $country = sed_import('country','G','INT');
 $region = sed_import('region','G','INT');
 $city = sed_import('city','G','INT');
@@ -37,9 +41,10 @@ if(!empty($sq))
 	$words = explode(' ', $sq);
 	$words_count = count($words);
 	
-	$sqlsearch = str_replace(" ", "%' OR item_title LIKE '%", sed_sql_prep($sq));
-	
-	$query_string .= " AND (item_title LIKE '%".$sqlsearch."%' OR item_text LIKE '%".$sqlsearch."%')";
+	$sqlsearch = implode("%", $words);
+	$sqlsearch = "%".$sqlsearch."%";
+		
+	$query_string .= " AND (p.item_title LIKE '".sed_sql_prep($sqlsearch)."' OR p.item_text LIKE '".sed_sql_prep($sqlsearch)."')";
 		
 }
 
@@ -72,7 +77,7 @@ $t->parse("MAIN.SEARCH");
 // ==============================================
 
 
-$sql = sed_sql_query("SELECT COUNT(*) FROM sed_projects 
+$sql = sed_sql_query("SELECT COUNT(*) FROM sed_projects AS p
 WHERE item_state=0 ".$query_string."");
 $totalitems = sed_sql_result($sql, 0, "COUNT(*)");
 

@@ -12,6 +12,10 @@ if (empty($d))
 { $d = '0'; }
 
 $sq = sed_import('sq','G','TXT');
+$sq = htmlspecialchars($sq);
+$sq = preg_replace('/ +/', ' ', $sq);
+$sq = sed_sql_prep($sq);
+
 $country = sed_import('country','G','INT');
 $region = sed_import('region','G','INT');
 $city = sed_import('city','G','INT');
